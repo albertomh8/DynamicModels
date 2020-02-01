@@ -1,0 +1,13 @@
+﻿@model dynamic
+
+@foreach (var item in Model.Clientes)
+{
+    <p>@item.Nombre</p>
+    <p>@item.Contacto</p>
+}
+
+@foreach (var item in Model.Pedidos)
+{
+    <p>@item.Fecha_Pedido</p>
+    <p>@item.Unidades</p>
+}

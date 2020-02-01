@@ -1,0 +1,13 @@
+﻿@model dynamic
+@{
+    ViewBag.Title = "ColeccionExpando";
+}
+
+<div>
+    @foreach (var item in Model)
+    {
+        <h2>Cliente: @item.Nombre (@item.ClienteId)</h2>
+        <p>Fecha Pedido: @item.Fecha_Pedido.ToShortDateString()</p>
+        <p>Unidades: @item.Unidades</p>
+    }
+</div>
