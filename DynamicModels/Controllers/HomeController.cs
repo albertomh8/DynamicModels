@@ -40,7 +40,7 @@ namespace DynamicModels.Controllers
         public ActionResult ColeccionExpando()
         {
             IQueryable<object>datosAnonimos = repo.ColeccionAnonima();
-            List<ExpandoObject> datosExpando = repo.ListaAnonima(datosAnonimos);
+            dynamic datosExpando = repo.ListaAnonima(datosAnonimos);
 
             return View(datosExpando);
         }
