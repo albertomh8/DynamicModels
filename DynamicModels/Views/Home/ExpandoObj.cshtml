@@ -1,9 +1,34 @@
-﻿
-@{
-    ViewBag.Title = "ExpandoObj";
-}
+﻿@model dynamic
 
-<h2>ExpandoObj</h2>
-
-<p>@ViewBag.Obj.PrimeraPropiedad</p>
-<p>@ViewBag.Obj.SegundaPropiedad</p>
+<div>
+    <h2>Model Clientes</h2>
+    <table class="table table-hover">
+        <tr>
+            <th>Nombre</th>
+            <th>Contacto</th>
+        </tr>
+        @foreach (var item in Model.Clientes)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Contacto</td>
+            </tr>
+        }
+    </table>
+</div>
+<div>
+    <h2>Model Pedidos</h2>
+    <table class="table table-hover">
+        <tr>
+            <th>Fecha de Pedido</th>
+            <th>Unidades</th>
+        </tr>
+        @foreach (var item in Model.Pedidos)
+        {
+            <tr>
+                <td>@item.Fecha_Pedido</td>
+                <td>@item.Unidades</td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,10 +1,6 @@
-﻿using DynamicModels.Models;
-using DynamicModels.Repositories;
-using System;
-using System.Collections.Generic;
+﻿using DynamicModels.Repositories;
 using System.Dynamic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace DynamicModels.Controllers
@@ -16,7 +12,7 @@ namespace DynamicModels.Controllers
         {
             repo = new RepositoryDinamico();
         }
-        public ActionResult Index()
+        public ActionResult ExpandoObj()
         {
             dynamic modelo = new ExpandoObject();
             modelo.Clientes = repo.CrearClientes();
@@ -25,21 +21,22 @@ namespace DynamicModels.Controllers
             return View(modelo);
         }
 
-        public ActionResult ExpandoObj()
+        public ActionResult ObjAnonimo()
         {
             var item = new
             {
                 PrimeraPropiedad = "Contenido primera propiedad",
-                SegundaPropiedad = "Contenido segunda propiedad"
+                SegundaPropiedad = "Contenido segunda propiedad",
+                TerceraPropiedad = 23
             };
 
-            ViewBag.Obj = repo.ObjetoAnonimo(item);
-            return View();
+            var modelo = repo.ObjetoAnonimo(item);
+            return View(modelo);
         }
 
         public ActionResult ColeccionExpando()
         {
-            IQueryable<object>datosAnonimos = repo.ColeccionAnonima();
+            IQueryable<object> datosAnonimos = repo.ColeccionAnonima();
             dynamic datosExpando = repo.ListaAnonima(datosAnonimos);
 
             return View(datosExpando);
